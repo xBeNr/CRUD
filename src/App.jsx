@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 
@@ -35,11 +38,17 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>CRUD con React + Vite</h1>
-      <UserForm onSubmit={editingUser ? updateUser : addUser} user={editingUser} />
-      <UserList users={users} onEdit={setEditingUser} onDelete={deleteUser} />
-    </div>
+    <Container className="mt-4">
+      <h1 className="text-center mb-4">CRUD con React</h1>
+      <Row>
+        <Col md={6}>
+          <UserForm onSubmit={editingUser ? updateUser : addUser} user={editingUser} />
+        </Col>
+        <Col md={6}>
+          <UserList users={users} onEdit={setEditingUser} onDelete={deleteUser} />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
